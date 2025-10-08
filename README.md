@@ -1,16 +1,76 @@
-# React + Vite
+# Simple Vite React App with Supabase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a guide to set up and run a simple React application built with **Vite** and integrated with **Supabase** for the backend.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 Prerequisites
+Before you begin, ensure you have the following installed on your local machine:
 
-## React Compiler
+- [Node.js](https://nodejs.org/) (which includes npm)  
+- [Yarn](https://yarnpkg.com/) (optional, but can be used instead of npm)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 1. Clone the Repository
+First, clone this repository to your local machine using git:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone <your-repository-url>
+cd <your-repository-directory>
+```
+## 2. Install Dependencies
+Once you are in the project directory, install the necessary dependencies.
+```bash
+npm install
+```
+## 3. Set Up Supabase
+This project requires a Supabase backend to function correctly.
+
+### Create a Supabase Project
+1. Go to [supabase.com](https://supabase.com) and sign in or create a new account.  
+2. Create a new project.  
+   - Give it a name.  
+   - Generate a secure database password (**save this password somewhere safe**).  
+3. Wait for your new project to be provisioned.  
+
+---
+
+### Create the Database Table
+1. Once your project is ready, navigate to the **SQL Editor** from the left sidebar.  
+2. Click on **+ New query**.  
+3. Copy and paste the following SQL code into the editor:
+
+```sql
+CREATE TABLE public.interview (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    name TEXT NOT NULL,
+    message TEXT NOT NULL,
+    email TEXT NOT NULL
+);
+```
+## 4. Configure Environment Variables
+You need to connect your local application to your Supabase project.
+
+### Create `.env.local` File
+1. In the root of your project directory, create a new file named **`.env.local`**.  
+
+---
+
+### Get Supabase Credentials
+1. Navigate to your Supabase project’s **Settings**.  
+2. In the settings menu, click on **API**.  
+   - The **Project URL** is your Supabase API URL.  
+   - The **anon public key** is your Supabase anonymous key.  
+
+---
+
+### Add Keys to `.env.local`
+Add these keys in the following format:
+
+```env
+VITE_SUPABASE_URL=YOUR_SUPABASE_PROJECT_URL
+VITE_SUPABASE_PUBLISHABLE_KEY=YOUR_SUPABASE_ANON_PUBLIC_KEY
+
+
