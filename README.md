@@ -7,8 +7,7 @@ This is a guide to set up and run a simple React application built with **Vite**
 ## 📋 Prerequisites
 Before you begin, ensure you have the following installed on your local machine:
 
-- [Node.js](https://nodejs.org/) (which includes npm)  
-- [Yarn](https://yarnpkg.com/) (optional, but can be used instead of npm)
+- [Node.js](https://nodejs.org/) (which includes npm) 
 
 ---
 
@@ -16,8 +15,8 @@ Before you begin, ensure you have the following installed on your local machine:
 First, clone this repository to your local machine using git:
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-directory>
+git clone https://github.com/amarjithp/interview.git
+cd interview
 ```
 ## 2. Install Dependencies
 Once you are in the project directory, install the necessary dependencies.
@@ -30,8 +29,6 @@ This project requires a Supabase backend to function correctly.
 ### Create a Supabase Project
 1. Go to [supabase.com](https://supabase.com) and sign in or create a new account.  
 2. Create a new project.  
-   - Give it a name.  
-   - Generate a secure database password (**save this password somewhere safe**).  
 3. Wait for your new project to be provisioned.  
 
 ---
@@ -72,5 +69,13 @@ Add these keys in the following format:
 ```env
 VITE_SUPABASE_URL=YOUR_SUPABASE_PROJECT_URL
 VITE_SUPABASE_PUBLISHABLE_KEY=YOUR_SUPABASE_ANON_PUBLIC_KEY
+```
+## 5. Run the Application
+You are now ready to run the application locally.
+
+Using **npm**:
+
+```bash
+npm run dev
 
 
